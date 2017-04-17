@@ -1,4 +1,5 @@
 package jp.co.Kenshu;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,14 +24,22 @@ public class SearchController {
 		    return "search";
 		}
 		@RequestMapping(value = "/update/input/", method = RequestMethod.GET)
-		public String update(Model model) {
+		public String update(Model model,@PathVariable int id) {
+			SearchDto search =searchService.getsearch(id);
 		    Dto form = new Dto();
+		    form.setId(search.getId());
+		    form.setName(search.getName());
+		    form.setDescription(search.getDescription());
+		    form.setFile(search.getFile());
+
 		    model.addAttribute("Dto", form);
 		    return "update";
 		}
 		@RequestMapping(value = "/update/input/", method = RequestMethod.POST)
 		public String update(@ModelAttribute Dto form, Model model) {
-		    int count = searchService.update();
+			SearchDto dto = new SearchDto();
+		    BeanUtils.copyProperties(form, dto);
+		    int count = searchService.update(dto);
 		    return "redirect:/search/";
 		}
 		@RequestMapping(value = "/delete/input/", method = RequestMethod.GET)

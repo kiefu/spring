@@ -40,6 +40,12 @@ public class Dto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public byte getFile() {
+		return file;
+	}
+	public void setFile(byte file) {
+		this.file = file;
+	}
 
 
 }

@@ -17,6 +17,7 @@ public class SearchService {
     public SearchDto getsearch(Integer id) {
         SearchDto dto = new SearchDto();
         Search entity = searchMapper.getSearch(id);
+        BeanUtils.copyProperties(entity, dto);
         return dto;
     }
     public List<SearchDto> getSearchAll() {
@@ -34,8 +35,8 @@ public class SearchService {
         }
         return resultList;
     }
-	public int update() {
-		   int count = searchMapper.update();
+	public int update(SearchDto dto) {
+		   int count = searchMapper.update(dto);
 		   return count;
 	}
 	public int delete(int id) {

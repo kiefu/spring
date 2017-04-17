@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Welcome</title>
+<title>更新確認画面</title>
 </head>
 <body>
     <h1>更新</h1>

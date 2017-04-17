@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Welcome</title>
+<title>削除確認画面/title>
 </head>
 <body>
     <h1>削除</h1>
